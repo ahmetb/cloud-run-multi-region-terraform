@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-locals {
-  region_map = { for r in var.regions : r => r } // for_each does not work with lists yet.
-}
-
 provider "google" {
   project = var.project_id
 }
@@ -27,7 +23,7 @@ provider "google-beta" {
 }
 
 resource "google_cloud_run_service" "default" {
-  for_each = local.region_map
+  for_each = toset(var.regions)
 
   name     = "${var.name}--${each.value}"
   location = each.value
@@ -43,7 +39,7 @@ resource "google_cloud_run_service" "default" {
 }
 
 resource "google_cloud_run_service_iam_member" "default" {
-  for_each = local.region_map
+  for_each = toset(var.regions)
 
   location = google_cloud_run_service.default[each.key].location
   project  = google_cloud_run_service.default[each.key].project
@@ -54,7 +50,7 @@ resource "google_cloud_run_service_iam_member" "default" {
 
 
 resource "google_compute_region_network_endpoint_group" "default" {
-  for_each = local.region_map
+  for_each = toset(var.regions)
 
   provider              = google-beta
   name                  = "${var.name}--neg--${each.key}"
