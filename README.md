@@ -2,12 +2,16 @@
 
 # Multi-Region Cloud Run load balancing with Terraform
 
+This is the **Terraform equivalent** of the [Serving traffic from multiple
+regions](https://cloud.google.com/run/docs/multiple-regions) tutorial I
+published on Cloud Run documentation.
+
 This example uses [Terraform
 serverless_negs](https://github.com/terraform-google-modules/terraform-google-lb-http/tree/master/modules/serverless_negs)
 module to deploy a Cloud Run service to [all
-locations](https://cloud.google.com/run/docs/locations) and then create a
-global Cloud HTTP Load Balancer with an anycast IP address to route your
-users to the **nearest Cloud Run location**.
+locations](https://cloud.google.com/run/docs/locations) and then create a global
+Cloud HTTP Load Balancer with an anycast IP address to route your users to the
+**nearest Cloud Run location**.
 
 ## Try it out
 
@@ -63,4 +67,4 @@ users to the **nearest Cloud Run location**.
 
 ----
 
-This is not an official project.
+This is not an official project and does not come with maintenance guarantees.
