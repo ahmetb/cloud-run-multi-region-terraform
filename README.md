@@ -24,13 +24,13 @@ Cloud HTTP Load Balancer with an anycast IP address to route your users to the
 1. See the execution plan (replace `PROJECT_ID` with yours)
 
     ```sh
-    terraform plan -var=name=zoneprinter -var=project=PROJECT_ID
+    terraform plan -var=name=zoneprinter -var=project_id=PROJECT_ID
     ```
 
 1. Apply the resources. (replace `PROJECT_ID` with yours)
 
     ```sh
-    terraform apply -var=name=zoneprinter -var=project=PROJECT_ID
+    terraform apply -var=name=zoneprinter -var=project_id=PROJECT_ID
     ```
 
 1. After deploying, it will print the load balancer’s IP address.
@@ -62,7 +62,7 @@ Cloud HTTP Load Balancer with an anycast IP address to route your users to the
 1. Clean up after you’re done:
 
     ```sh
-    terraform destroy -var=name=zoneprinter -var=project=PROJECT_ID
+    terraform destroy -var=name=zoneprinter -var=project_id=PROJECT_ID
     ```
 
 ----
