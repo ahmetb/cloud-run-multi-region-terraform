@@ -15,53 +15,13 @@
  */
 
 variable "project_id" {
-  description = "gcp project ID"
+  description = "GCP Project ID"
   type        = string
 }
 
 variable "name" {
   description = "name prefix for resources"
   type        = string
-}
-
-variable "regions" {
-  type        = list(string)
-  description = "deploy to regions"
-
-  /*
-
-    Ideally this should come from a data source:
-        https://github.com/hashicorp/terraform-provider-google/issues/7850
-
-    Until then, Cloud Run Regions list can be obtained from the REST API:
-
-        curl -sSLfH "Authorization: Bearer $(gcloud auth print-access-token -q)" \
-            "https://run.googleapis.com/v1/projects/$(gcloud config get-value core/project -q)/locations?alt=json" |\
-            jq '[.locations[].locationId]'
-    */
-  default = [
-    "asia-east1",
-    "asia-east2",
-    "asia-northeast1",
-    "asia-northeast2",
-    "asia-northeast3",
-    "asia-south1",
-    "asia-southeast1",
-    "asia-southeast2",
-    "australia-southeast1",
-    "europe-north1",
-    "europe-west1",
-    "europe-west2",
-    "europe-west3",
-    "europe-west4",
-    "europe-west6",
-    "northamerica-northeast1",
-    "southamerica-east1",
-    "us-central1",
-    "us-east1",
-    "us-east4",
-    "us-west1"
-  ]
 }
 
 variable "image" {
