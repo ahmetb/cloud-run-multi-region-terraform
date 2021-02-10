@@ -2,10 +2,6 @@ provider "google" {
   project = var.project_id
 }
 
-provider "google-beta" {
-  project = var.project_id
-}
-
 data "google_cloud_run_locations" "default" { }
 
 resource "google_cloud_run_service" "default" {
@@ -38,7 +34,6 @@ resource "google_cloud_run_service_iam_member" "default" {
 resource "google_compute_region_network_endpoint_group" "default" {
   for_each = toset(data.google_cloud_run_locations.default.locations)
 
-  provider              = google-beta
   name                  = "${var.name}--neg--${each.key}"
   network_endpoint_type = "SERVERLESS"
   region                = google_cloud_run_service.default[each.key].location
