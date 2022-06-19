@@ -26,5 +26,5 @@ variable "name" {
 
 variable "image" {
   description = "container image to deploy"
-  default     = "gcr.io/ahmetb-public/zoneprinter"
+  default     = "gcr.io/google-samples/zone-printer:0.2"
 }
